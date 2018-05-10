@@ -1,8 +1,9 @@
 package com.sammereyer.helper;
 
-import gui.AccountScene;
-import gui.AlbumScene;
-import gui.MarketplaceScene;
+import com.sammereyer.gui.AccountScene;
+import com.sammereyer.gui.AlbumScene;
+import com.sammereyer.gui.MarketplaceScene;
+
 import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;

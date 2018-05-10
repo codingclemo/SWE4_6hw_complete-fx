@@ -1,6 +1,7 @@
-package gui;
+package com.sammereyer.gui;
 
-import javafx.scene.text.Text;
+import com.sammereyer.helper.MenuBarGenerator;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,49 +10,61 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class RegisterDialog implements EventHandler<ActionEvent> {
-
-	Stage registerStage = new Stage();
-
-	public VBox registerDataPane;
-	private Button registerButton;
-	private Button cancelButton;
-
-	private Button createTextButton(String id, String caption) {
-		Button button = new Button(caption);
-		button.setId(id);
-		button.setPadding(new Insets(5));
-		button.setPrefSize(100, 30);
-		return button;
-	}
-
+public class AccountScene implements EventHandler<ActionEvent> {
+    
+	public GridPane gridpane;
 	public Stage stage;
+	public Text notification = new Text();
+	
+    public AccountScene(Stage stage)  {
+    	gridpane = new GridPane();
+        Text t = new Text();
+        t.setFont(new Font(20));
+        t.setText("Change your Account-Details");
+        gridpane.add(t,1,2);
+        gridpane.setMinSize(500, 500);
+      
+        gridpane.setId("account-scene");
+        gridpane.setBackground(new Background ( new BackgroundFill(Color.WHITESMOKE, null, null)));
+        
+        MenuBar menuBar = MenuBarGenerator.generateMenuBar(stage);
 
-	TextField usernameTextField;
-	PasswordField passwordTextField;
-	TextField addressTextField;
+        gridpane.add(menuBar,1,1);
+        
+        
+        addLabelsAndTextFields(stage);
 
-	public RegisterDialog(Stage stage) {
+    }
 
+	private void addLabelsAndTextFields(Stage stage) {
+		
 		this.stage = stage;
-		Text t = new Text();
-		t.setText("Enter your Credentials and click on confirm");
-
+		TextField usernameTextField;
+		PasswordField passwordTextField;
+		TextField addressTextField;
+		VBox registerDataPane;
+		Button registerButton;
+		Button cancelButton;
+		
 		Label usernameLabel = new Label("Username");
 		usernameLabel.setAlignment(Pos.CENTER_LEFT);
 		usernameTextField = new TextField();
@@ -98,68 +111,67 @@ public class RegisterDialog implements EventHandler<ActionEvent> {
 		regionInput.setMaxWidth(200);
 
 		// add buttons
-		registerButton = createTextButton("button-register", "Register");
+		registerButton = RegisterDialog.createTextButton("button-confirm", "Confirm");
 		registerButton.setOnAction(this);
 
-		cancelButton = createTextButton("button-cancel", "Cancel");
+		cancelButton = RegisterDialog.createTextButton("button-cancel", "Cancel");
 		cancelButton.setOnAction(this);
 
 		HBox buttonBox = new HBox();
 		buttonBox.setId("button-pane");
 		buttonBox.getChildren().addAll(registerButton, cancelButton);
-		buttonBox.setAlignment(Pos.CENTER);
+//		buttonBox.setAlignment(Pos.CENTER);
 		buttonBox.setSpacing(10);
 		buttonBox.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, null, null)));
 
 		registerDataPane = new VBox();
 		registerDataPane.setId("register-pane");
 
-		registerDataPane.getChildren().addAll(t, usernameInput, pwInput, addressInput, countryInput, regionInput,
+		registerDataPane.getChildren().addAll(usernameInput, pwInput, addressInput, countryInput, regionInput,
 				buttonBox);
 
 		registerDataPane.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, null, null)));
-		registerDataPane.setAlignment(Pos.CENTER);
+//		registerDataPane.setAlignment(Pos.CENTER);
 
-		Scene refactorScene = new Scene(new VBox(registerDataPane));
-
-		registerStage.setScene(refactorScene);
-		registerStage.initModality(Modality.WINDOW_MODAL);
-		// LoginStage.initOwner(stage);
-		registerStage.setResizable(false);
+		gridpane.add(registerDataPane,1,3);
+		gridpane.add(notification,1,4);
+		
 	}
 
-	public void show() {
-		registerStage.setTitle("Login");
-		registerStage.show();
-	}
+	public Scene getScene() {
+        return new Scene(gridpane);
+    }
 
 	@Override
 	public void handle(ActionEvent event) {
 		try {
-			if (((Button) event.getSource()).getId().equals("button-register")) {
-				System.out.println("register button pressed");
-				Scene loggedInScene = new LoggedInScene(stage).getScene();
+			if (((Button) event.getSource()).getId().equals("button-confirm")) {
+				System.out.println("confirm button pressed");
 				// taking care of logging in
 
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.initModality(Modality.WINDOW_MODAL);
 				alert.setTitle("Register Status");
 				alert.setHeaderText("Look, an Information Dialog");
-				alert.setContentText("You are either loged in nor not -> backend");
+				alert.setContentText("stuff is updated");
 				alert.showAndWait().ifPresent(rs -> {
 					if (rs == ButtonType.OK) {
 						System.out.println("Pressed OK.");
-						stage.setScene(loggedInScene);
-						registerStage.close();
+						
+//						notification.setText("Account Details updated!");
+				        
+						
 					}
 				});
 
 			} else if (((Button) event.getSource()).getId().equals("button-cancel")) {
-				registerStage.close();
+				System.out.println("cancel button pressed");
 			}
 		} catch (Exception e) {
 
 		}
-
+		
 	}
+    
+    
 }

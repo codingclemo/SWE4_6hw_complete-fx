@@ -1,4 +1,4 @@
-package beans;
+package com.sammereyer.beans;
 
 public class User {
 

@@ -1,4 +1,4 @@
-package gui;
+package com.sammereyer.gui;
 
 
 import javafx.geometry.Insets;

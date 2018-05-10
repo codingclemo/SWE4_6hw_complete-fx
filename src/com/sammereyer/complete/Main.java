@@ -1,6 +1,9 @@
 package com.sammereyer.complete;
 
-import gui.WelcomeScene;
+
+
+import com.sammereyer.gui.WelcomeScene;
+
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

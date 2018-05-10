@@ -1,4 +1,4 @@
-package gui;
+package com.sammereyer.gui;
 
 import javafx.scene.text.Text;
 import javafx.event.ActionEvent;
