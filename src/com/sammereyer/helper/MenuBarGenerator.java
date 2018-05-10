@@ -27,6 +27,7 @@ public class MenuBarGenerator {
 		completeMenuMarketplace.setGraphic(menuLabelMarketplace);
 
 		MenuBar menuBar = new MenuBar();
+		menuBar.prefWidthProperty().bind(stage.widthProperty());
 		menuBar.getMenus().addAll(completeMenuAccount, completeMenuAlbum, completeMenuMarketplace);
 		return menuBar;
 

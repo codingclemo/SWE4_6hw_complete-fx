@@ -27,8 +27,10 @@ public class AccountScene{
         
         MenuBar menuBar = MenuBarGenerator.generateMenuBar(stage);
 
-		menuBar.prefWidthProperty().bind(stage.widthProperty());
         gridpane.add(menuBar,1,1);
+        
+        
+        
         
     }
 

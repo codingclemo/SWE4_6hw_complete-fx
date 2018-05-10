@@ -26,7 +26,6 @@ public class LoggedInScene{
         gridpane.setBackground(new Background ( new BackgroundFill(Color.WHITESMOKE, null, null)));
         MenuBar menuBar = MenuBarGenerator.generateMenuBar(stage);
         
-        menuBar.prefWidthProperty().bind(stage.widthProperty());
 		gridpane.add(menuBar,1,1);
         
     }

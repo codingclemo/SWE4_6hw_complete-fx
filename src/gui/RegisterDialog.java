@@ -112,7 +112,7 @@ public class RegisterDialog implements EventHandler<ActionEvent> {
 		buttonBox.setBackground(new Background(new BackgroundFill(Color.WHITESMOKE, null, null)));
 
 		registerDataPane = new VBox();
-		registerDataPane.setId("credentials-pane");
+		registerDataPane.setId("register-pane");
 
 		registerDataPane.getChildren().addAll(t, usernameInput, pwInput, addressInput, countryInput, regionInput,
 				buttonBox);
