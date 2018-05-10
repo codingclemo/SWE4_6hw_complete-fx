@@ -1,7 +1,6 @@
 package gui;
 
 import javafx.scene.text.Text;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -13,14 +12,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.Window;
 
 public class LoginDialog implements EventHandler<ActionEvent> {
 
@@ -52,7 +49,7 @@ public class LoginDialog implements EventHandler<ActionEvent> {
 		Label usernameLabel = new Label("Username");
 		usernameLabel.setAlignment(Pos.CENTER_LEFT);
 		usernameTextField = new TextField();
-		usernameTextField.setPromptText("enter e-mail adress");
+		usernameTextField.setPromptText("enter user name");
 		VBox usernameInput = new VBox();
 		usernameInput.getChildren().addAll(usernameLabel, usernameTextField);
 		usernameInput.setPadding(new Insets(5, 0, 10, 0));
@@ -108,7 +105,8 @@ public class LoginDialog implements EventHandler<ActionEvent> {
 		try {
 			if (((Button) event.getSource()).getId().equals("button-confirm")) {
 				System.out.println("confirm button pressed");
-				stage.setScene(new LoggedInScene().getScene());
+				Scene loggedInScene = new LoggedInScene(stage).getScene();
+				stage.setScene(loggedInScene);
 				LoginStage.close();
 			} else if (((Button) event.getSource()).getId().equals("button-cancel")){
 				LoginStage.close();
