@@ -1,5 +1,6 @@
 package com.sammereyer.gui;
 
+import com.sammereyer.helper.ButtonGenerator;
 import com.sammereyer.helper.MenuBarGenerator;
 
 import javafx.collections.FXCollections;
@@ -42,7 +43,6 @@ public class AccountScene implements EventHandler<ActionEvent> {
         t.setText("Change your Account-Details");
         gridpane.add(t,1,2);
         gridpane.setMinSize(500, 500);
-      
         gridpane.setId("account-scene");
         gridpane.setBackground(new Background ( new BackgroundFill(Color.WHITESMOKE, null, null)));
         
@@ -111,10 +111,10 @@ public class AccountScene implements EventHandler<ActionEvent> {
 		regionInput.setMaxWidth(200);
 
 		// add buttons
-		registerButton = RegisterDialog.createTextButton("button-confirm", "Confirm");
+		registerButton = ButtonGenerator.createTextButton("button-confirm", "Confirm");
 		registerButton.setOnAction(this);
 
-		cancelButton = RegisterDialog.createTextButton("button-cancel", "Cancel");
+		cancelButton = ButtonGenerator.createTextButton("button-cancel", "Cancel");
 		cancelButton.setOnAction(this);
 
 		HBox buttonBox = new HBox();

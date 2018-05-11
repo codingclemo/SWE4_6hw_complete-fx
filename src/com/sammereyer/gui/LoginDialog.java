@@ -1,6 +1,9 @@
 package com.sammereyer.gui;
 
 import javafx.scene.text.Text;
+
+import com.sammereyer.helper.ButtonGenerator;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -26,14 +29,6 @@ public class LoginDialog implements EventHandler<ActionEvent> {
 	public VBox credentialsPane;
 	private Button confirmButton;
 	private Button cancelButton;
-
-	private Button createTextButton(String id, String caption) {
-		Button button = new Button(caption);
-		button.setId(id);
-		button.setPadding(new Insets(5));
-		button.setPrefSize(100, 30);
-		return button;
-	}
 
 	public Stage stage;
 
@@ -65,10 +60,10 @@ public class LoginDialog implements EventHandler<ActionEvent> {
 		pwInput.setMaxWidth(200);
 
 		// add buttons
-		confirmButton = createTextButton("button-confirm", "Confirm");
+		confirmButton = ButtonGenerator.createTextButton("button-confirm", "Confirm");
 		confirmButton.setOnAction(this);
 
-		cancelButton = createTextButton("button-cancel", "Cancel");
+		cancelButton = ButtonGenerator.createTextButton("button-cancel", "Cancel");
 		cancelButton.setOnAction(this);
 
 		HBox buttonBox = new HBox();

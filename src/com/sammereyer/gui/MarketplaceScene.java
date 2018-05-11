@@ -1,5 +1,7 @@
 package com.sammereyer.gui;
 
+import java.awt.Button;
+
 import com.sammereyer.helper.DataTableModelOwnAlbum;
 import com.sammereyer.helper.DataTableModelUsers;
 import com.sammereyer.helper.MenuBarGenerator;
@@ -74,7 +76,12 @@ public class MarketplaceScene {
 		myCardsText.setText("My Cards");
 		tableOwnAlbum = TableGeneratorOwnAlbum.generateOwnAlbumTable();
 		tableboxOwnCards.getChildren().addAll(myCardsText, tableOwnAlbum);
+		Button acceptDealButton = new Button();
 
+		
+		VBox proposeDealControls = new VBox();
+		
+		
 		tableBoxSecondLine.getChildren().addAll(tableboxOwnCards);
 		tableboxOwnCards.setPadding(new Insets(20));
 
