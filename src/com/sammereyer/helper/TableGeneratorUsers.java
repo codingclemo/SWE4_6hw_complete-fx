@@ -27,10 +27,10 @@ public class TableGeneratorUsers {
 		TableColumn<DataTableModelUsers, Integer> stickersTotalCol = new TableColumn<>("Stickers Total");
 		stickersTotalCol.setCellValueFactory(new PropertyValueFactory<>("stickersTotal"));
 
-		TableColumn<DataTableModelUsers, Integer> stickersDuplicateCol = new TableColumn<>("Stickers Duplicate");
+		TableColumn<DataTableModelUsers, Integer> stickersDuplicateCol = new TableColumn<>("Stickers Intersect");
 		stickersDuplicateCol.setCellValueFactory(new PropertyValueFactory<>("stickersDuplicate"));
 
-		TableColumn<DataTableModelUsers, Integer> stickersIntersectCol = new TableColumn<>("Stickers Intersect");
+		TableColumn<DataTableModelUsers, Integer> stickersIntersectCol = new TableColumn<>("Stickers Delta");
 		stickersIntersectCol.setCellValueFactory(new PropertyValueFactory<>("stickersIntersect"));
 
 		table.getColumns().addAll(idCol, usernameCol, countryCol, regionCol, stickersTotalCol, stickersDuplicateCol,
