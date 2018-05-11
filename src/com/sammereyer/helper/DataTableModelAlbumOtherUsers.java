@@ -3,13 +3,13 @@ package com.sammereyer.helper;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class DataTableModelAlbum {
+public class DataTableModelAlbumOtherUsers {
 	private SimpleIntegerProperty id;
 	private SimpleStringProperty team;
 	private SimpleStringProperty name;
 	private SimpleIntegerProperty numberOfTickets;
 
-	public DataTableModelAlbum(int id, String team, String name, int numberOfTickets) {
+	public DataTableModelAlbumOtherUsers(int id, String team, String name, int numberOfTickets) {
 		this.id = new SimpleIntegerProperty(id);
 		this.team = new SimpleStringProperty(team);
 		this.name = new SimpleStringProperty(name);

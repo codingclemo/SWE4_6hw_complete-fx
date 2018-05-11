@@ -1,7 +1,7 @@
 package com.sammereyer.gui;
 
-import com.sammereyer.helper.AlbumTableGenerator;
-import com.sammereyer.helper.DataTableModelAlbum;
+import com.sammereyer.helper.TableGeneratorOwnAlbum;
+import com.sammereyer.helper.DataTableModelOwnAlbum;
 import com.sammereyer.helper.MenuBarGenerator;
 
 import javafx.geometry.Insets;
@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 public class AlbumScene{
     
 	public GridPane gridpane;
-	public TableView<DataTableModelAlbum> table;
+	public TableView<DataTableModelOwnAlbum> table;
     public AlbumScene(Stage stage) {
     	gridpane = new GridPane();
         Text t = new Text();
@@ -29,25 +29,21 @@ public class AlbumScene{
         gridpane.add(t,1,2);
         gridpane.setMinSize(500, 500);
         
-      
         gridpane.setId("album-scene");
         gridpane.setBackground(new Background ( new BackgroundFill(Color.WHITESMOKE, null, null)));
         
         MenuBar menuBar = MenuBarGenerator.generateMenuBar(stage);
-		gridpane.add(menuBar,1,1);
+		
+        gridpane.add(menuBar,1,1);
 		
 		VBox tablebox = new VBox();
-		table = AlbumTableGenerator.generateAlbumTable();
+		table = TableGeneratorOwnAlbum.generateOwnAlbumTable();
 		tablebox.getChildren().add(table);
 		tablebox.setPadding(new Insets(20));
 				
         gridpane.add(tablebox, 1, 3);
-        
-        
-        
+                
     }
-
-	
 
 	public Scene getScene() {
         return new Scene(gridpane);
